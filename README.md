@@ -7,3 +7,5 @@ Transforma dados salvo em tabela do Sankhya em arquivos xml separados
 
 O script pega a chave da nfe para criar o arquivo xml e usa como nome
 O nome da pasta criada onde os xmls sao salvos é o mesmo nome do arquivo original caputarado do banco sem a extensão.
+
+O script inicialmente leva 20 segundos para criar 50 mil arquivos xml.

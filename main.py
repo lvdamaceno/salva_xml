@@ -5,21 +5,28 @@ import time
 
 
 def update_file_name(file):
-    # Update file name
+    # creates the xml tree
     tree = ET.parse(file)
     root = tree.getroot()
     infnfe = root[0].attrib
+    # gets Id tag from nfe xml
     filename = infnfe['Id']
     print(filename)
+    # Update file name
     os.rename(file, f'{filename}.xml')
 
 
 def create_xml(filename):
+    # creates de pd
     data = pd.read_csv(f"{filename}.csv")
+    # creates a folder
     os.mkdir(f'./{filename}')
+    # set the folder as actual folder
     os.chdir(f'./{filename}')
+    # initialize counter
     i = 0
 
+    # iterates the xml content
     for index, row in data.iterrows():
         i += 1
         # Take content
@@ -36,6 +43,7 @@ def create_xml(filename):
 
         # Close file
         text_file.close()
+        # changes the xml name to its CHAVE NFE
         update_file_name('sample.xml')
 
 
@@ -53,4 +61,5 @@ def timer(function, parameter):
 
 
 if __name__ == '__main__':
+    # Creates the xmls files and count the time elapsed
     timer(create_xml, '2023_top10')

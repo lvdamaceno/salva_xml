@@ -9,3 +9,19 @@ O script pega a chave da nfe para criar o arquivo xml e usa como nome
 O nome da pasta criada onde os xmls sao salvos é o mesmo nome do arquivo original caputarado do banco sem a extensão.
 
 O script inicialmente leva 20 segundos para criar 50 mil arquivos xml.
+
+```sql
+-- NOTAS DE SAÍDA
+SELECT [XML] 
+FROM TGFNFE WHERE NUNOTA IN (
+SELECT DISTINCT NUNOTA FROM TGFCAB WHERE YEAR(DTNEG)=2023)
+
+```
+```sql
+-- NOTAS DE ENTRADA
+SELECT [XML] 
+FROM TGFIXN WHERE NUNOTA IN (
+SELECT DISTINCT NUNOTA FROM TGFCAB WHERE YEAR(DTNEG)=2023)
+AND [XML] IS NOT NULL
+
+```
